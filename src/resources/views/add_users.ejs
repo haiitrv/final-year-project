@@ -1,0 +1,31 @@
+<%- include('./layouts/header') %>
+
+    <h1>Add Users</h1>
+
+    <form action="/admin/add" method="post">
+        <div>
+            <label for="name">Full name</label>
+            <input type="text" name="name" id="name" >
+        </div>
+        <div>
+            <label for="email">Email</label>
+            <input type="text" name="email" id="email" value="<%= locals.email ? email : '' %>" >
+        </div>
+        <div>
+            <label for="password"> Password </label>
+            <input type="password" name="password" id="password" >
+        </div>
+        <div>
+            <select class="form-control" name="role" aria-label="Default">
+                <option value="" selected disabled>Select Role</option>
+                <option value="AAD">Academic Affair Department</option>
+                <option value="TEACHER">Teacher</option>
+                <option value="STUDENT">Student</option>
+            </select>
+        </div>
+        <div>
+            <input type="submit" value="Register">
+        </div>
+    </form>
+
+    <%- include('./layouts/footer') %>
