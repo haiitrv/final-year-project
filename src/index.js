@@ -9,6 +9,7 @@ const connectFlash = require('connect-flash')
 const passport = require('passport')
 const connectMongo = require('connect-mongo')
 const connectEnsureLogin = require('connect-ensure-login')
+const methodOverride = require('method-override')
 require('dotenv').config()
 
 
@@ -22,6 +23,14 @@ app.set('views', path.join(__dirname, 'resources', 'views'))
 app.use(express.static(path.join(__dirname, 'public')))
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
+app.use(methodOverride(function (req, res) {
+    if (req.body && typeof req.body === 'object' && '_method' in req.body) {
+        // look in urlencoded POST bodies and delete it
+        var method = req.body._method
+        delete req.body._method
+        return method
+    }
+}))
 
 
 // Initialize session

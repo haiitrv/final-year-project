@@ -2,6 +2,7 @@ const User = require('../models/user.model')
 const mongoose = require('mongoose')
 const { roles } = require('../../utils/constants')
 const { body, validationResult } = require('express-validator')
+const mailer = require('../../utils/mailer')
 
 
 
@@ -101,7 +102,7 @@ class AdminController {
             }
             const user = new User(req.body);
             await user.save();
-            req.flash('success',`${user.email} has been registered succesfully!`)
+            req.flash('success', `${user.email} has been registered succesfully!`)
             res.redirect('/auth/login')
         } catch (error) {
             next(error)
@@ -109,6 +110,49 @@ class AdminController {
 
     }
 
+    // [GET] Send email form
+    async send(req, res, next) {
+        res.render('mails/mail')
+    }
+
+    // [POST] Perform sending email
+    async sendMail(req, res, next) {
+        try {
+            // Get the data from the client
+            const { to, subject, body } = req.body
+            // Perform sending email
+            await mailer.sendMail(to, subject, body)
+            // Sending successfully to client
+            res.render('mails/mail_success')
+        } catch (error) {
+            // Sending error to client
+            res.send(error)
+        }
+    }
+
+    // [DELETE] Remove users
+    async delete(req, res, next) {
+
+        const id = req.params.id
+
+        if (!id) {
+            req.flash('error', 'Invalid Request!')
+            return res.redirect('back')
+        }
+
+        if (!mongoose.Types.ObjectId.isValid(id)) {
+            req.flash('error', 'Invalid ID!')
+            return res.redirect('back')
+        }
+        
+
+        const user = await User.deleteOne({
+            _id: id
+        })
+
+        req.flash('info', `User has been removed successfully!`)
+        res.redirect('back')
+    }
 }
 
 module.exports = new AdminController

@@ -6,11 +6,14 @@ const { registerValidator } = require('../utils/validator')
 const { body, validationResult } = require('express-validator')
 
 
-
 router.get('/users', adminController.getUser)
 router.get('/user/:id', adminController.getProfile)
 router.post('/update-role', adminController.updateRole)
 router.get('/add', adminController.add)
 router.post('/add', [registerValidator], adminController.addUser)
+router.get('/send-email', adminController.send)
+router.post('/send-email', adminController.sendMail)
+router.delete('/user/:id', adminController.delete)
+
 
 module.exports = router

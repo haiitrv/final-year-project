@@ -9,6 +9,7 @@ const passport = require('passport')
 // const { ensureNotAuth } = require('../middleware/ensureNotAuth')
 const { ensureLoggedOut, ensureLoggedIn }= require('connect-ensure-login')
 
+
 router.get('/login', ensureLoggedOut({ redirectTo: '/' }), authController.loginGet)
 // router.get('/register', ensureLoggedOut({ redirectTo: '/' }), authController.registerGet)
 router.get('/logout', ensureLoggedIn({ redirectTo: '/' }), authController.logOut)
@@ -18,5 +19,6 @@ router.post('/login', ensureLoggedOut({ redirectTo: '/' }), passport.authenticat
     failureFlash: true
 }))
 // router.post('/register', ensureLoggedOut({ redirectTo: '/' }), registerValidator, authController.register)
+
 
 module.exports = router
