@@ -10,6 +10,11 @@
                 <li class="header__navbar-item"><a href="/admin/send-email">Send Email</a></li>
                 <% } %>
 
+                <% if (user.role==='AAD') { %>
+                    <li class="header__navbar-item"><a href="/aad/category">Category</a></li>
+                    <li class="header__navbar-item"><a href="/aad/add">Create Category</a></li>
+                <% } %>
+
                     <li class="header__navbar-item"><a href="/auth/logout">Logout</a></li>
                     <% } else { %>
                         <li class="header__navbar-item"><a href="/auth/login">Login</a></li>
