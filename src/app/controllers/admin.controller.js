@@ -13,7 +13,7 @@ class AdminController {
         try {
             // Find all users
             const users = await User.find()
-            res.render('manage_users', { users })
+            res.render('manage-users/manage_users', { users })
 
         } catch (error) {
             next(error)
@@ -32,7 +32,7 @@ class AdminController {
             }
             // Get user from this ID
             const person = await User.findById(id)
-            res.render('profile', { person })
+            res.render('manage-users/profile', { person })
         } catch (error) {
             next(error)
         }
@@ -75,7 +75,7 @@ class AdminController {
 
     // [GET] Add new users
     async add(req, res, next) {
-        res.render('add_users')
+        res.render('manage-users/add_users')
     }
 
     // [POST] Add new users
@@ -86,7 +86,7 @@ class AdminController {
                 errors.array().forEach((error) => {
                     req.flash('error', error.msg)
                 })
-                res.render('add_users', {
+                res.render('manage-users/add_users', {
                     email: req.body.email,
                     messages: req.flash(),
                 })

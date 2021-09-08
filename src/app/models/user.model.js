@@ -25,7 +25,8 @@ const UserSchema = new mongoose.Schema({
         type: String,
         enum: [roles.admin, roles.aad, roles.teacher, roles.student],
         default: roles.student,
-    }
+    },
+
 })
 
 // Save and encrypt password
