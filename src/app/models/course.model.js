@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
+const Category = require('./category.model')
 
-const CategorySchema = new mongoose.Schema({
+const CourseSchema = new mongoose.Schema({
     name: {
         type: String,
         maxLength: 50
@@ -16,13 +17,13 @@ const CategorySchema = new mongoose.Schema({
         default: Date.now
     },
 
-    course: [{
+    cate: {
         type: mongoose.Types.ObjectId,
-        ref: 'course'
-    }]
+        ref: 'category'
+    }
 
 })
 
-const Category = mongoose.model('category', CategorySchema)
+const Course = mongoose.model('course', CourseSchema)
 
-module.exports = Category
+module.exports = Course

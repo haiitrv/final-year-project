@@ -8,6 +8,8 @@ router.get('/categories', aadController.getCategory)
 router.get('/category/:id', aadController.getSpeCat)
 router.get('/add', aadController.add)
 router.post('/add', aadController.addCat)
-
+router.get('/category/:id/course', aadController.getAllCourses)
+router.get('/category/:id/create', aadController.getCourse)
+router.post('/category/:id/create', aadController.newCourse)
 
 module.exports = router

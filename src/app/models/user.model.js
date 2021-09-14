@@ -27,6 +27,11 @@ const UserSchema = new mongoose.Schema({
         default: roles.student,
     },
 
+    category: [{
+        type: mongoose.Types.ObjectId,
+        ref: 'category'
+    }]
+
 })
 
 // Save and encrypt password

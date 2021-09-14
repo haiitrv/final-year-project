@@ -1,30 +1,33 @@
 <%- include('../layouts/header') %> 
 
-<h1>Category</h1>
+<h1>Course</h1>
 
 <table class="table">
     <thead>
         <th>ID</th>
-        <th>Category</th>
+        <th>Course</th>
         <th>Description</th>
         <th>Created Date</th>
+        <th>Category</th>
     </thead>
     <tbody>
-        <% categories.forEach(category => { %>
+        <% courses.forEach(course => { %>
             <tr>
                 <td>
-                    <%= category.id %>
+                    <%= course.id %>
                 </td>
                 <td>
-                    <a href="/aad/category/<%= category.id %>">
-                    <%= category.name %>
+                    <%= course.name %>
                     </a>
                 </td>
                 <td>
-                    <%= category.description %>
+                    <%= course.description %>
                 </td>
                 <td>
-                    <%= category.createdAt %> 
+                    <%= course.createdAt %> 
+                </td>
+                <td>
+                    <%= course.category %> 
                 </td>
                 
             </tr>
