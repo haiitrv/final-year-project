@@ -1,5 +1,4 @@
 const mongoose = require('mongoose')
-const Category = require('./category.model')
 
 const CourseSchema = new mongoose.Schema({
     name: {
@@ -11,17 +10,8 @@ const CourseSchema = new mongoose.Schema({
         type: String,
         maxLengh: 600,
     },
-
-    createdAt: {
-        type: Date,
-        default: Date.now
-    },
-
-    cate: {
-        type: mongoose.Types.ObjectId,
-        ref: 'category'
-    }
-
+}, {
+    timestamps: true
 })
 
 const Course = mongoose.model('course', CourseSchema)

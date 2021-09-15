@@ -4,23 +4,20 @@
         <li class="header__navbar-item"><a href="/">Home</a></li>
         <% if (user) { %>
             <li class="header__navbar-item"><a href="/user/profile">Profile</a></li>
-            <% if (user.role==='ADMIN' ) { %>
+            <% if (user.role === 'ADMIN') { %>
                 <li class="header__navbar-item"><a href="/admin/users">Manage Users</a></li>
                 <li class="header__navbar-item"><a href="/admin/add">Add Users</a></li>
                 <li class="header__navbar-item"><a href="/admin/send-email">Send Email</a></li>
                 <% } %>
 
-                <% if (user.role==='AAD') { %>
-                    <li class="header__navbar-item"><a href="/aad/categories">Category</a></li>
-                    <li class="header__navbar-item"><a href="/aad/add">Create Category</a></li>
+                <% if (user.role === 'AAD') { %>
+                    <!-- <li class="header__navbar-item"><a href="/aad/categories">Category</a></li> -->
+                    <li class="header__navbar-item"><a href="/aad/add">Create Course</a></li>
                 <% } %>
 
                     <li class="header__navbar-item"><a href="/auth/logout">Logout</a></li>
                     <% } else { %>
                         <li class="header__navbar-item"><a href="/auth/login">Login</a></li>
                         <% } %>
-
-
-
     </ul>
 </nav>

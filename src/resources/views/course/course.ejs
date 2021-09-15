@@ -1,14 +1,14 @@
 <%- include('../layouts/header') %> 
 
-<h1>Course</h1>
+<h1>Courses</h1>
+<li class="header__navbar-item"><a href="/aad/add">Add new course</a></li>
+
 
 <table class="table">
     <thead>
         <th>ID</th>
-        <th>Course</th>
-        <th>Description</th>
-        <th>Created Date</th>
         <th>Category</th>
+        <th>Description</th>
     </thead>
     <tbody>
         <% courses.forEach(course => { %>
@@ -17,23 +17,18 @@
                     <%= course.id %>
                 </td>
                 <td>
+                    <a href="/course/c/<%= course.id %>">
                     <%= course.name %>
                     </a>
                 </td>
                 <td>
                     <%= course.description %>
-                </td>
-                <td>
-                    <%= course.createdAt %> 
-                </td>
-                <td>
-                    <%= course.category %> 
-                </td>
-                
+                </td>                
             </tr>
             <% }) %>
     </tbody>
 </table>
+
 
 
 <%- include('../layouts/footer') %> 

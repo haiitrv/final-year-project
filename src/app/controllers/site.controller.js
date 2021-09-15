@@ -1,10 +1,15 @@
+const mongoose = require('mongoose')
+const Category = require('../models/category.model')
 
 class SiteController {
 
-    index(req, res, next) {
-        res.render('site')
+    async index(req, res, next) {
+        const categories = await Category.find()
+        res.render('site', { categories })
     }
-
+    
 }
+
+
 
 module.exports = new SiteController
