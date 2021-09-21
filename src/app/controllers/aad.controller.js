@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 const User = require('../models/user.model')
 const Course = require('../models/course.model')
+const { roles } = require('../../utils/constants')
 
 
 class AadController {
@@ -8,14 +9,23 @@ class AadController {
 
     // [GET] add new categories
     async add(req, res, next) {
-        res.render('course/add_course')
+        User.find({ role: 'AAD' }).then(usr => {
+            res.render('course/add_course', { users: usr })
+        })
     }
-    // [POST] add new categories
-    async addCat(req, res, next) {
-        const course = new Course(req.body)
-        await course.save()
-        req.flash('success', `${course.name} has been created successfully!`)
+    // [POST] add new courses
+    async addCourse(req, res, next) {
+        const { name, description } = req.body
+
+        const newCourse = await new Course({
+            name,
+            description,
+            createdBy: req.body.user
+        }).save()
+
+        req.flash('success', `${newCourse.name} has been created successfully!`)
         res.redirect('back')
+
     } catch(error) {
         next(error)
     }

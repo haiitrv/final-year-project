@@ -5,12 +5,20 @@
     <form action="/aad/add" method="post">
         <div>
             <label for="name">Course Name</label>
-            <input type="text" name="name" id="name" >
+            <input type="text" name="name" id="name">
         </div>
         <div>
             <label for="description">Course Description</label>
             <textarea id="description" name="description" rows="4" cols="50">
             </textarea>
+        </div>
+        <div>
+            <label for="user">User Created</label>
+            <select name="user" id="user">
+                <% users.forEach(usr=> { %>
+                    <option value="<%= usr._id %>"><%= usr.email %></option>
+                    <% }) %>
+            </select>
         </div>
         <div>
             <input type="submit" value="Create">

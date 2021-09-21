@@ -13,7 +13,8 @@ class AdminController {
         try {
             // Find all users
             const users = await User.find()
-            res.render('manage-users/manage_users', { users })
+            const n_users = await User.estimatedDocumentCount()
+            res.render('manage-users/manage_users', { users, n_users })
 
         } catch (error) {
             next(error)

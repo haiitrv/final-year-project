@@ -10,6 +10,12 @@ const CourseSchema = new mongoose.Schema({
         type: String,
         maxLengh: 600,
     },
+
+    createdBy: {
+        type: mongoose.Types.ObjectId,
+        ref: 'user'
+    },
+
 }, {
     timestamps: true
 })

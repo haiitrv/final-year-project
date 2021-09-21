@@ -7,8 +7,15 @@ class CourseController {
 
     async getCourses(req, res, next) {
         try {
-            const courses = await Course.find()
-            res.render('course/course', { courses })
+            // const courses = await Course.find()
+            // res.render('course/course', { courses })
+            const n_courses = await Course.estimatedDocumentCount()
+
+            Course.find()
+                  .populate('createdBy')
+                  .then(courses => {
+                      res.render('course/course', { courses, n_courses })
+                  })
 
         } catch (error) {
             next(error)
@@ -32,8 +39,6 @@ class CourseController {
         }
     }
     
-
-
 }
 
 module.exports = new CourseController

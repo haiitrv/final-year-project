@@ -6,4 +6,5 @@ const { ensureSpeCrs } = require('../middleware/ensureSpeCat')
 router.get('/c', courseController.getCourses)
 router.get('/c/:id', ensureSpeCrs , courseController.getSpeCrs)
 
+
 module.exports = router
