@@ -1,0 +1,22 @@
+<%- include('../layouts/header') %>
+
+    <h1>
+        Add new materials
+    </h1>
+
+    <form action="/course/c/<%= course.id %>/m" method="POST">
+        <div>
+            <label for="name">Name</label>
+            <input type="text" name="name" id="name">
+        </div>
+        <div>
+            <label for="description">Description</label>
+            <textarea id="description" name="description" rows="4" cols="50">
+            </textarea>
+        </div>
+        <div>
+            <input type="submit" value="Create">
+        </div>
+    </form>
+
+<%- include('../layouts/footer') %>
