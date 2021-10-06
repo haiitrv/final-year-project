@@ -1,12 +1,12 @@
 const mongoose = require('mongoose')
 
-const MaterialSchema = new mongoose.Schema({
+const AssignmentSchema = new mongoose.Schema({
     name: {
-        type: String,
+        type: String
     },
 
     description: {
-        type: String,
+        type: String
     },
 
     cloudinary_url: {
@@ -16,20 +16,26 @@ const MaterialSchema = new mongoose.Schema({
     cloudinary_id: {
         type: String,
     },
-    
+
+    user: {
+        type: mongoose.Types.ObjectId,
+        ref: 'user'
+    },
+
     course: {
         type: mongoose.Types.ObjectId,
         ref: 'course'
     },
 
-    createdBy: {
+    uploadedWork: [{
         type: mongoose.Types.ObjectId,
-        ref: 'user'
-    }
+        ref: 'uploaded'
+    }]
+
 }, {
     timestamps: true
 })
 
-const Material = mongoose.model('material', MaterialSchema)
+const Assignment = mongoose.model('assignment', AssignmentSchema)
 
-module.exports = Material
+module.exports = Assignment

@@ -1,29 +1,31 @@
+
+
 <%- include('../layouts/header') %>
 
 
     <div class="container">
-        <h1>Materials</h1>
+        <h1>Assignments</h1>
 
 
         <table class="table">
             <thead>
                 <th>Name</th>
                 <th>Description</th>
-                <th>Material URL</th>
+                <th>Assignment URL</th>
             </thead>
             <tbody>
-                <% materials.forEach(mtr=> { %>
+                <% assignments.forEach(asm=> { %>
                     <tr>
                         <td>
-                            <a href="/course/c/<%= course.id %>/m/<%= mtr.id %>">
-                                <%= mtr.name %>
+                            <a href="/course/c/<%= course.id %>/a/<%= asm.id %>">
+                                <%= asm.name %>
                             </a>
                         </td>
                         <td>
-                            <%= mtr.description %>
+                            <%= asm.description %>
                         </td>
                         <td>
-                            <%= mtr.cloudinary_url %>
+                            <%= asm.cloudinary_url %>
                         </td>
 
                     </tr>
@@ -35,4 +37,4 @@
 
 
 
-    <%- include('../layouts/footer') %>
+<%- include('../layouts/footer') %> 

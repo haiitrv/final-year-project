@@ -6,11 +6,11 @@ const aadRouter = require('./aad.route')
 const courseRouter = require('./course.route')
 
 const { ensureLoggedIn, ensureLoggedOut } = require('connect-ensure-login')
-const { ensureAdmin } = require('../middleware/ensureAdmin')
-const { ensureAad } = require('../middleware/ensureAad')
-const { ensureTeacher } = require('../middleware/ensureTeacher')
-const { ensureStudent } = require('../middleware/ensureStudent')
-const { ensureCourse } = require('../middleware/ensureCourse')
+const { ensureAdmin } = require('../middleware/ensureRole')
+const { ensureAad } = require('../middleware/ensureRole')
+const { ensureTeacher } = require('../middleware/ensureRole')
+const { ensureStudent } = require('../middleware/ensureRole')
+const { ensureCourse } = require('../middleware/ensureRole')
 
 function route(app) {
 

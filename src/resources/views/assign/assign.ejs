@@ -1,0 +1,50 @@
+<%- include('../layouts/header') %>
+    <div class="container">
+        <h1>Assign Page</h1>
+        <table class="table">
+            <thead>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Roles</th>
+                <th>Select classes</th>
+                <th>Classes</th>
+            </thead>
+            <tbody>
+                <% users.forEach(usr=> { %>
+                    <tr>
+                        <td>
+                            <%= usr.name %>
+                        </td>
+                        <td>
+                            <%= usr.email %>
+                        </td>
+                        <td>
+                            <%= usr.role %>
+                        </td>
+                        <td>
+                            <div>
+                                <form action="/aad/assign" method="POST">
+                                    <input type="hidden" name="id" value="<%= usr.id %>">
+                                    <select name="course" id="course">
+                                        <% course.forEach(crs=> { %>
+                                            <option value="<%= crs._id %>">
+                                                <%= crs.name %>
+                                            </option>
+                                            <% }) %>             
+                                    </select>
+                                    <input type="submit" value="Assign">
+                                </form>
+
+                            </div>
+                        </td>
+                        <td>
+                            <%= usr.course %> 
+                        </td>
+                    </tr>
+
+                    <% }) %>
+            </tbody>
+        </table>
+
+    </div>
+    <%- include('../layouts/footer') %>

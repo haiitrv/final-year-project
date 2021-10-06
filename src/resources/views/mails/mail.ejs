@@ -1,39 +1,40 @@
 <%- include ('../layouts/header') %>
 
-    <div class="send-mail-form">
-        <h4>Send email to the user</h4>
-        <hr>
-        <div class="text-left">
-            <form action="/admin/send-email" method="post">
-                <div class="row">
-                    <div class="form-group col-md-8">
-                        <label for="to">To:</label>
-                        <input type="email" class="form-control" name="to" required>
+    <div class="container">
+        <div class="send-mail-form">
+            <h4>Send email to the user</h4>
+            <hr>
+            <div class="text-left">
+                <form action="/admin/send-email" method="post">
+                    <div class="row">
+                        <div class="form-group col-md-8">
+                            <label for="to">To:</label>
+                            <input type="email" class="form-control" name="to" required>
+                        </div>
                     </div>
-                </div>
 
-                <div class="row">
-                    <div class="form-group col-md-8">
-                        <label for="subject">Subject:</label>
-                        <input type="text" class="form-control" name="subject" required>
+                    <div class="row">
+                        <div class="form-group col-md-8">
+                            <label for="subject">Subject:</label>
+                            <input type="text" class="form-control" name="subject" required>
+                        </div>
                     </div>
-                </div>
 
-                <div class="row">
-                    <div class="form-group col-md-8">
-                        <label for="body">Body:</label>
-                        <textarea id="classic-editor" cols="5" rows="5" class="form-control" name="body"></textarea>
+                    <div class="row">
+                        <div class="form-group col-md-8">
+                            <label for="body">Body:</label>
+                            <textarea id="classic-editor" cols="5" rows="5" class="form-control" name="body"></textarea>
+                        </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="form-group col-md-8">
-                        <button type="submit" class="btn btn-success">Send</button>
+                    <div class="row">
+                        <div class="form-group col-md-8">
+                            <button type="submit" class="btn btn-success">Send</button>
+                        </div>
                     </div>
-                </div>
-            </form>
+                </form>
+            </div>
         </div>
+
     </div>
 
-
-
-<%- include ('../layouts/footer') %>
+    <%- include ('../layouts/footer') %>

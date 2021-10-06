@@ -1,23 +1,55 @@
-<nav class="header__navbar">
-    <h2>ULMS</h2>
-    <ul class="header__navbar-list">
-        <li class="header__navbar-item"><a href="/">Home</a></li>
-        <% if (user) { %>
-            <li class="header__navbar-item"><a href="/user/profile">Profile</a></li>
-            <% if (user.role === 'ADMIN') { %>
-                <li class="header__navbar-item"><a href="/admin/users">Manage Users</a></li>
-                <li class="header__navbar-item"><a href="/admin/add">Add Users</a></li>
-                <li class="header__navbar-item"><a href="/admin/send-email">Send Email</a></li>
-                <% } %>
 
-                <% if (user.role === 'AAD') { %>
-                    <!-- <li class="header__navbar-item"><a href="/aad/categories">Category</a></li> -->
-                    <li class="header__navbar-item"><a href="/aad/add">Create Course</a></li>
-                <% } %>
 
-                    <li class="header__navbar-item"><a href="/auth/logout">Logout</a></li>
-                    <% } else { %>
-                        <li class="header__navbar-item"><a href="/auth/login">Login</a></li>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <div class="collapse navbar-collapse" id="navbarText">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <!-- li home -->
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/">Home</a>
+                </li>
+                <% if (user) { %>
+                    
+                    <% if (user.role==='ADMIN' ) { %>
+                        <!-- li manage-user -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="/admin/users">Manage Users</a>
+                        </li>
+                        <!-- li add users -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="/admin/add">Add Users</a>
+                        </li>
+                        <!-- li send email -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="/admin/send-email">Send Email</a>
+                        </li>
                         <% } %>
-    </ul>
+                            <% if (user.role==='AAD' ) { %>
+                                <!-- li create courses -->
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/aad/add">Create Classes</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/aad/assign">Assign</a>
+                                </li>
+                                <% } %>
+
+                                    <!-- li logout -->
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="/auth/logout">Logout</a>
+                                    </li>
+                                    <!-- li profile -->
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="/user/profile"><%= user.name %> </a>
+                                    </li>
+                                    <% } else { %>
+                                        <!-- li login -->
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="/auth/login">Login</a>
+                                        </li>
+                                        <% } %>
+            </ul>
+        </div>
+    </div>
 </nav>

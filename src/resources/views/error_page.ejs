@@ -1,8 +1,13 @@
-<%- include('./layouts/header') %> 
+<%- include('./layouts/header') %>
 
-<h1> Something went wrong...! </h1>
-<h3> <%= error.status %> || <%= error.message %>  </h3>
-<br>
-<a href="/"> Back to homepage </a>
+    <div class="container">
+        <h1> Something went wrong...! </h1>
+        <h3>
+            <%= error.status %> || <%= error.message %>
+        </h3>
+        <br>
+        <a href="/"> Back to homepage </a>
+    </div>
 
-<%- include('./layouts/footer') %> 
+
+    <%- include('./layouts/footer') %>

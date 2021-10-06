@@ -1,0 +1,55 @@
+<%- include('../layouts/header') %>
+
+  <div class="container">
+    <!-- Info -->
+    <h1>
+      <%= asm.name %>
+    </h1>
+    <div class="profile">
+      <div>
+        <p class="subtitle">
+          <%= asm.description %>
+        </p>
+      </div>
+      <div>
+        <p class="subtitle">
+          <%= asm.cloudinary_url %>
+        </p>
+      </div>
+    </div>
+
+    <!--Upload works-->
+
+    <form action="/course/c/<%= course.id %>/a/<%= asm.id %>" method="POST" enctype="multipart/form-data">
+      <div>
+        <label for="name">Name</label>
+        <input type="text" name="name" id="name" placeholder="Enter the title">
+      </div>
+      <div>
+        <label for="description">Description</label>
+        <input type="text" id="description" name="description" placeholder="Some description...">
+      </div>
+      <div>
+        <label>Choose files to upload</label>
+        <input type="file" name="image" multiple>
+      </div>
+      <div>
+        <input type="submit" value="Create">
+      </div>
+    </form>
+    <!--Upload works-->
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <a href="/course/c/<%= course.id %>/a/<%= asm.id %>/submissions">View all submissions</a>
+    <!-- Comment section -->
+
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <%- include('../layouts/footer') %>

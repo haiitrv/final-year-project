@@ -27,6 +27,16 @@ const UserSchema = new mongoose.Schema({
         default: roles.student,
     },
 
+    course: [{
+        type: mongoose.Types.ObjectId,
+        ref: 'course' 
+    }],
+
+    comment: [{
+        type: mongoose.Types.ObjectId,
+        ref: 'comment'
+    }]
+
 
 })
 

@@ -16,10 +16,20 @@ const CourseSchema = new mongoose.Schema({
         ref: 'user'
     },
 
-    // material: [{
-    //     type: mongoose.Types.ObjectId,
-    //     ref: 'material'
-    // }]
+    user: [{
+        type: mongoose.Types.ObjectId,
+        ref: 'user'
+    }],
+
+    materials: [{
+        type: mongoose.Types.ObjectId,
+        ref: 'material'
+    }],
+
+    assignments: [{
+        type: mongoose.Types.ObjectId,
+        ref: 'assignment'
+    }]
 
 }, {
     timestamps: true

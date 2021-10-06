@@ -1,11 +1,38 @@
-<%- include('../layouts/header') %> 
+<%- include('../layouts/header') %>
 
-<h1><%= mtr.name %> </h1>
-<div class="profile">
-  <div>
-    <p class="title">Description</p>
-    <p class="subtitle"> <%= mtr.description %>  </p>
-  </div>
-</div>
+  <div class="container">
+    <!-- Info -->
+    <h1>
+      <%= mtr.name %>
+    </h1>
+    <div class="profile">
+      <div>
+        <p class="subtitle">
+          <%= mtr.description %>
+        </p>
+      </div>
+      <div>
+        <p class="subtitle">
+          <%= mtr.cloudinary_url %>
+        </p>
+      </div>
+    </div>
 
-<%- include('../layouts/footer') %> 
+    <!--Test-->
+
+    <!--Test-->
+
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <!-- Comment section -->
+
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <%- include('../layouts/footer') %>

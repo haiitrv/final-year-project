@@ -1,39 +1,40 @@
-<%- include('../layouts/header') %> 
+<%- include('../layouts/header') %>
+    <div class="container">
+        <h1>Classes</h1>
+        <li class="header__navbar-item"><a href="/aad/add">Add new class</a></li>
 
-<h1>Courses</h1>
-<li class="header__navbar-item"><a href="/aad/add">Add new course</a></li>
+        <h3>Total of classes: <%= n_courses %>
+        </h3>
 
-<h3>Total of courses: <%= n_courses %> </h3>
+        <table class="table">
+            <thead>
+                <th>Class</th>
+                <th>Description</th>
+                <th>Created By</th>
+            </thead>
+            <tbody>
+                <% courses.forEach(course=> { %>
+                    <tr>
+                        <td>
+                            <a href="/course/c/<%= course.id %>">
+                                <%= course.name %>
+                            </a>
+                        </td>
+                        <td>
+                            <%= course.description %>
+                        </td>
+                        <td>
+                            <%= course.createdBy.name %>
+                        </td>
+                    </tr>
+                    <% }) %>
+            </tbody>
+        </table>
 
-<table class="table">
-    <thead>
-        <th>ID</th>
-        <th>Course</th>
-        <th>Description</th>
-        <th>Created By</th>
-    </thead>
-    <tbody>
-        <% courses.forEach(course => { %>
-            <tr>
-                <td>
-                    <%= course.id %>
-                </td>
-                <td>
-                    <a href="/course/c/<%= course.id %>">
-                    <%= course.name %>
-                    </a>
-                </td>
-                <td>
-                    <%= course.description %>
-                </td>  
-                <td>
-                    <%= course.createdBy.name %> 
-                </td>              
-            </tr>
-            <% }) %>
-    </tbody>
-</table>
-
+    </div>
 
 
-<%- include('../layouts/footer') %> 
+
+
+
+    <%- include('../layouts/footer') %>

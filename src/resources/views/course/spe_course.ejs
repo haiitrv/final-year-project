@@ -1,14 +1,43 @@
-<%- include('../layouts/header') %> 
+<%- include('../layouts/header') %>
 
-<h1><%= crs.name %> </h1>
-<div class="profile">
-  <div>
-    <p class="title">Description</p>
-    <p class="subtitle"> <%= crs.description %>  </p>
-  </div>
-</div>
+    <div class="container">
+        <div class="course-des">
+            <h1>
+                <%= crs.name %>
+            </h1>
+            <div class="profile">
+            </div>
+        <!-- Test -->
+        <div class="accordion accordion-flush" id="accordionFlushExample">
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="flush-headingOne">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                  View Class Description
+                </button>
+              </h2>
+              <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                <div class="accordion-body"><%= crs.description %></div>
+              </div>
+            </div>
+            
+            
+          </div>
+        <!-- Test -->
+        </div>
 
-<a href="/course/c/<%= crs.id %>/m">Create new materials</a>
-<br>
-<a href="/course/c/<%= crs.id %>/m/all">All materials</a>
-<%- include('../layouts/footer') %> 
+        
+
+        <a href="/course/c/<%= crs.id %>/m">Create new materials</a>
+        <br>
+        <a href="/course/c/<%= crs.id %>/a">Create new assignments</a>
+        <br>
+        <h1>Stream</h1>
+
+
+        <a href="/course/c/<%= crs.id %>/m/all">Get materials</a>
+        <br>
+        <a href="/course/c/<%= crs.id %>/a/all">Get assignments</a>
+
+        
+
+<%- include('../layouts/footer') %>

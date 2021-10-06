@@ -1,24 +1,36 @@
-<%- include('../layouts/header') %> 
+<%- include('../layouts/header') %>
 
-<h1><span class="goback" onclick="window.history.back()"></span> Profile </h1>
 
-<div class="profile">
-  <div>
-    <p class="title">Name</p>
-    <p class="subtitle"> <%= person.name %> </p>
-  </div>
-  <div>
-    <p class="title">ID</p>
-    <p class="subtitle"> <%= person.id %> </p>
-  </div>
-  <div>
-    <p class="title">Username</p>
-    <p class="subtitle"> <%= person.email %> </p>
-  </div>
-  <div>
-    <p class="title">Role</p>
-    <p class="subtitle"> <%= person.role %>  </p>
-  </div>
-</div>
+  <div class="container-sm">
+    <h1><span class="goback" onclick="window.history.back()"></span> Profile </h1>
 
-<%- include('../layouts/footer') %> 
+    <div class="profile">
+      <div>
+        <p class="title">Name</p>
+        <p class="subtitle">
+          <%= person.name %>
+        </p>
+      </div>
+      <div>
+        <p class="title">ID</p>
+        <p class="subtitle">
+          <%= person.id %>
+        </p>
+      </div>
+      <div>
+        <p class="title">Username</p>
+        <p class="subtitle">
+          <%= person.email %>
+        </p>
+      </div>
+      <div>
+        <p class="title">Role</p>
+        <p class="subtitle">
+          <%= person.role %>
+        </p>
+      </div>
+    </div>
+  </div>
+
+
+  <%- include('../layouts/footer') %>

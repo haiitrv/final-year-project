@@ -9,6 +9,7 @@ const connectFlash = require('connect-flash')
 const passport = require('passport')
 const connectMongo = require('connect-mongo')
 const connectEnsureLogin = require('connect-ensure-login')
+const multer = require('multer')
 const methodOverride = require('method-override')
 require('dotenv').config()
 

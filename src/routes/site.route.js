@@ -1,12 +1,10 @@
 const express = require('express')
 const router = express.Router()
 const siteController = require('../app/controllers/site.controller')
-const { ensureTeacher } = require('../middleware/ensureTeacher') 
-const { ensureStudent } = require('../middleware/ensureStudent')
+const { ensureTeacher } = require('../middleware/ensureRole')
+const { ensureStudent } = require('../middleware/ensureRole')
 
 router.get('/', siteController.index)
 // router.get('')
-
-
 
 module.exports = router
