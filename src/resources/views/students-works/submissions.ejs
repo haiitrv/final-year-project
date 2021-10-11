@@ -1,56 +1,56 @@
 <%- include('../layouts/header') %>
 
 
-        <h1>Submission</h1>
+    <h1>Submission</h1>
 
 
-        <table class="table">
-            <thead>
-                <th>Student Name</th>
-                <th>Works URL</th>
-                <th>Feedback</th>
-                <th>Grade</th>
-                <th></th>
-            </thead>
-            <tbody>
-                <% works.forEach(asm=> { %>
-                    <tr>
-                        <td>
+    <table class="table">
+        <thead>
+            <th>Student Name</th>
+            <th>Works URL</th>
+            <th>Feedback</th>
+            <th>Grade</th>
+            <th></th>
+        </thead>
+        <tbody>
+            <% works.forEach(asm=> { %>
+                <tr>
+                    <td>
+                        <a href="/course/c/<%= course.id %>/a/<%= assignment.id %>/submissions/<%= asm.id %>/cmt">
                             <%= asm.user %>
-                        </td>
-                        <td>
-                            <a href="<%= asm.cloudinary_url %>">View submissions</a>
-                        </td>
-                        <td>
-                            <%= asm.comment %> 
-                        </td>
-                        <td>
-                            <%= asm.grade %> 
-                        </td>
-                        <td>
-                            <form action="/course/c/<%= course.id %>/a/<%= asm.id %>/submissions" method="post">
-                                <input type="hidden" name="id" value="<%= asm.grade %>">
-                                <select name="role" id="role">
-                                    <option value="0">0</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
-                                    <option value="6">6</option>
-                                    <option value="7">7</option>
-                                    <option value="8">8</option>
-                                    <option value="9">9</option>
-                                    <option value="10">10</option>
-                                </select>
-                                <input type="submit" value="Grade">
-                            </form>
-                        </td>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="<%= asm.cloudinary_url %>">View submissions</a>
+                    </td>
+                    <td>
+                        <%= asm.comment %>
+                    </td>
+                    <td>
+                        <%= asm.grade %>
+                        <form action="/course/c/<%= course.id %>/a/<%= assignment.id %>/submissions" method="POST">
+                            <input type="hidden" name="id" value="<%= asm.id %>">
+                            <select name="grade" id="grade">
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                            </select>
+                            <input type="submit" value="Grade">
+                        </form>
+                    </td>
 
-                    </tr>
-                    <% }) %>
-            </tbody>
-        </table>
+                </tr>
+                <% }) %>
+        </tbody>
+    </table>
 
 
 

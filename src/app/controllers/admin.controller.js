@@ -12,7 +12,7 @@ class AdminController {
     async getUser(req, res, next) {
         try {
             // Find all users
-            const users = await User.find()
+            const users = await User.find({ role: ['AAD', 'TEACHER', 'STUDENT'] })
             const n_users = await User.estimatedDocumentCount()
             res.render('manage-users/manage_users', { users, n_users })
 
@@ -94,7 +94,7 @@ class AdminController {
                 return
             }
 
-            const { email } = req.body
+            const { email, date_of_birth, address, phone } = req.body
             const doesExist = await User.findOne({ email })
             if (doesExist) {
                 req.flash('warning', 'This email has already existed! Try another email!')
@@ -145,7 +145,7 @@ class AdminController {
             req.flash('error', 'Invalid ID!')
             return res.redirect('back')
         }
-        
+
 
         const user = await User.deleteOne({
             _id: id

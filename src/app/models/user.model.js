@@ -21,22 +21,29 @@ const UserSchema = new mongoose.Schema({
         required: true
     },
 
+    date_of_birth: {
+        type: Date,
+        required: true,
+    },
+
+    phone: {
+        type: String,
+    },
+
     role: {
         type: String,
         enum: [roles.admin, roles.aad, roles.teacher, roles.student],
         default: roles.student,
     },
 
+    address: {
+        type: String,
+    },
+
     course: [{
         type: mongoose.Types.ObjectId,
         ref: 'course' 
     }],
-
-    comment: [{
-        type: mongoose.Types.ObjectId,
-        ref: 'comment'
-    }]
-
 
 })
 
@@ -47,10 +54,6 @@ UserSchema.pre('save', async function (next) {
             const salt = await bcrypt.genSalt(10)
             const hashedPassword = await bcrypt.hash(this.password, salt)
             this.password = hashedPassword
-            // Verify admin
-            if (this.email === process.env.ADMIN_EMAIL.toLowerCase()) {
-                this.role = roles.admin
-            }
         }
         next()
     } catch (error) {

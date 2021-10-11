@@ -27,10 +27,9 @@ const UploadedSchema = new mongoose.Schema({
         ref: 'assignment'
     },
 
-    comment: [{
-        type: mongoose.Types.ObjectId,
-        ref: 'comment'
-    }],
+    comment: {
+        type: String,
+    },
 
     grade: {
         type: String,

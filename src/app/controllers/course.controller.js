@@ -77,6 +77,11 @@ class CourseController {
                 res.redirect('back')
                 return
             }
+            if (!mongoose.Types.ObjectId.isValid(courseID)) {
+                req.flash('error', 'Invalid ID!!!')
+                res.redirect('back')
+                return
+            }
             const mtr = await Material.findById(materialID)
             const course = await Course.findById(courseID)
 
@@ -90,7 +95,7 @@ class CourseController {
 
     async getMaterials(req, res, next) {
         const courseID = req.params.courseID
-        const course =  await Course.findById(courseID).populate('materials')
+        const course = await Course.findById(courseID).populate('materials')
         res.render('material/material', { materials: course.materials, course })
     }
 
@@ -148,13 +153,66 @@ class CourseController {
         const courseID = req.params.courseID
         const course = await Course.findById(courseID)
         const assignment = await Assignment.findById(assignmentID).populate('uploadedWork')
-        // console.log(assignment)
-        res.render('students-works/submissions', { works: assignment.uploadedWork, course })
+        res.render('students-works/submissions', { works: assignment.uploadedWork, course, assignment })
     }
 
+    // [GET] get specific student work
+    async getSpeStudentWork(req, res, next) {
+        const submissionID = req.params.submissionID
+        const assignmentID = req.params.assignmentID
+        const courseID = req.params.courseID
+        if (!mongoose.Types.ObjectId.isValid(submissionID)) {
+            req.flash('error', 'Invalid ID!!!')
+            res.redirect('back')
+            return
+        }
+        if (!mongoose.Types.ObjectId.isValid(assignmentID)) {
+            req.flash('error', 'Invalid ID!!!')
+            res.redirect('back')
+            return
+        }
+        if (!mongoose.Types.ObjectId.isValid(courseID)) {
+            req.flash('error', 'Invalid ID!!!')
+            res.redirect('back')
+            return
+        }
+        const submission = await Uploaded.findById(submissionID)
+        const assignment = await Assignment.findById(assignmentID)
+        const course = await Course.findById(courseID)
+        res.render('students-works/feedback', { course, assignment, submission })
+    }
+
+    // [POST] comment
+    async commentStudentWorks(req, res, next) {
+        const submissionID = req.params.submissionID
+        const { comment } = req.body
+        await Uploaded.findByIdAndUpdate(
+            submissionID,
+            { $set: { comment: comment.trim() } },
+            { $set: { grade: grade } },
+            { new: true }
+        )
+        req.flash('success', 'Your comment has been uploaded successfully!')
+        res.redirect('back')
+    }
+
+    // [UPDATE] grade
+    async gradeStudentWorks(req, res, next) {
+        const { id, grade } = req.body
+        if (!mongoose.Types.ObjectId.isValid(id)) {
+            req.flash('error', 'Invalid ID')
+            return res.redirect('back')
+        }
+        await Uploaded.findByIdAndUpdate(
+            id,
+            { grade: grade },
+            { new: true, runValidators: true }
+        )
+        req.flash('info', 'Set grade successfully!')
+        res.redirect('back')
+
+    }
 
 }
-
-
 
 module.exports = new CourseController

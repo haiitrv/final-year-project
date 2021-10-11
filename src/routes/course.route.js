@@ -93,6 +93,9 @@ router.post('/c/:courseID/a/:assignmentID', upload.single('image'), async (req, 
     }
 })
 
+router.get('/c/:courseID/a/:assignmentID/submissions/:submissionID/cmt', ensureUploadMat, courseController.getSpeStudentWork)
+router.post('/c/:courseID/a/:assignmentID/submissions/:submissionID/cmt', ensureUploadMat, courseController.commentStudentWorks)
+router.post('/c/:courseID/a/:assignmentID/submissions', ensureUploadMat, courseController.gradeStudentWorks)
 
 
 

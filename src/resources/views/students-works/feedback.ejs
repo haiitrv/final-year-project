@@ -1,0 +1,31 @@
+<%- include('../layouts/header') %>
+
+    <div class="container">
+        <h1>Specific Student Works</h1>
+
+        <h3>
+            <%= submission.name %>
+        </h3>
+        <h3>
+            <%= submission.description %>
+        </h3>
+        <%= submission.cloudinary_url %>
+            <form action="/course/c/<%= course.id %>/a/<%= assignment.id %>/submissions/<%= submission.id %>/cmt"
+                method="POST">
+                <div>
+                    <label for="comment">Comment</label>
+                    <br>
+                    <textarea id="comment" name="comment" rows="4" cols="130"></textarea>
+                </div>
+                <div>
+                    <input type="submit" value="Add Private Comment">
+                </div>
+                
+            </form>
+
+    </div>
+
+
+
+
+    <%- include('../layouts/footer') %>
