@@ -30,7 +30,17 @@ const AssignmentSchema = new mongoose.Schema({
     uploadedWork: [{
         type: mongoose.Types.ObjectId,
         ref: 'uploaded'
-    }]
+    }],
+
+    setDeadlineDate: {
+        type: Date,
+        required: true,
+    },
+
+    setDueDate: {
+        type: Date,
+        required: true,
+    }
 
 }, {
     timestamps: true

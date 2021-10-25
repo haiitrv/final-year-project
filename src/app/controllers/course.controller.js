@@ -51,6 +51,16 @@ class CourseController {
         }
     }
 
+    // [GET] get update form
+    async getUpdate(req, res, next) {
+        res.render('course/update_course')
+    }
+
+    // [POST] update course
+    async postUpdate(req, res, next) {
+        
+    }
+
 
     // [GET] get the form to create new materials
     async getCreateMaterials(req, res, next) {
@@ -152,7 +162,10 @@ class CourseController {
         const assignmentID = req.params.assignmentID
         const courseID = req.params.courseID
         const course = await Course.findById(courseID)
-        const assignment = await Assignment.findById(assignmentID).populate('uploadedWork')
+        const assignment = await Assignment.findById(assignmentID).populate({
+            path: 'uploadedWork',
+            // populate: { path: 'user' }
+        })
         res.render('students-works/submissions', { works: assignment.uploadedWork, course, assignment })
     }
 
@@ -189,7 +202,6 @@ class CourseController {
         await Uploaded.findByIdAndUpdate(
             submissionID,
             { $set: { comment: comment.trim() } },
-            { $set: { grade: grade } },
             { new: true }
         )
         req.flash('success', 'Your comment has been uploaded successfully!')
@@ -211,7 +223,9 @@ class CourseController {
         req.flash('info', 'Set grade successfully!')
         res.redirect('back')
 
-    }
+    } 
+    
+   
 
 }
 

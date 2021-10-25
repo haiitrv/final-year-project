@@ -10,13 +10,15 @@ const User = require('../app/models/user.model')
 const Course = require('../app/models/course.model')
 const Uploaded = require('../app/models/uploadedAsm.model')
 
-// Get classes and specific classes
+// Get classes and specific classes & Update
 router.get('/c', courseController.getCourses)
 router.get('/c/:courseID', ensureSpeCrs, courseController.getSpeCrs)
+router.get('/c/:courseID/u', ensureSpeCrs, courseController.getUpdate)
+router.post('/c/:courseID/u', ensureSpeCrs, courseController.postUpdate)
 
 // Get create materials form & post & get materials & specific materials 
 router.get('/c/:courseID/m', ensureUploadMat, courseController.getCreateMaterials)
-router.post('/c/:courseID/m', upload.single('image'), async (req, res, next) => {
+router.post('/c/:courseID/m', upload.single('images'), async (req, res, next) => {
     try {
         const courseID = req.params.courseID
         const result = await cloudinary.uploader.upload(req.file.path)
@@ -50,6 +52,8 @@ router.post('/c/:courseID/a', upload.single('image'), async (req, res, next) => 
         let assignment = new Assignment({
             name: req.body.name,
             description: req.body.description,
+            setDeadlineDate: req.body.setDeadlineDate,
+            setDueDate: req.body.setDueDate,
             cloudinary_url: result.secure_url,
             cloudinary_id: result.public_id,
         })

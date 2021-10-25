@@ -52,6 +52,16 @@ class AadController {
         req.flash('info', `${user.name} has been assigned successfully!`)
         res.redirect('back')
     }
+
+    // SEARCH
+
+    async search(req, res, next) {
+        const name_search = req.query.name
+        const users = await User.find({ name: new RegExp(name_search, 'i') }).populate('course', 'name')
+        const course = await Course.find()
+        res.render('assign/searched', { users, course })
+    }
+
 }
 
 module.exports = new AadController

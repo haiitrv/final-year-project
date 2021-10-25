@@ -1,43 +1,74 @@
 <%- include('../layouts/header') %>
 
-    <div class="container">
-        <div class="course-des">
-            <h1>
-                <%= crs.name %>
-            </h1>
-            <div class="profile">
+  <div class="container">
+    <div class="course-des">
+      <h1>
+        <%= crs.name %>
+      </h1>
+      <a href="/course/c/<%= crs.id %>/u"><i class="fas fa-cog"></i></a>
+      <a href="/course/c/<%= crs.id %>/m"><i class="far fa-plus-square"></i></a>
+      <div class="profile">
+      </div>
+      <!-- Test -->
+      <div class="accordion accordion-flush" id="accordionFlushExample">
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="flush-headingOne">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+              data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+              View Class Description
+            </button>
+          </h2>
+          <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
+            data-bs-parent="#accordionFlushExample">
+            <div class="accordion-body">
+              <%= crs.description %>
             </div>
-        <!-- Test -->
-        <div class="accordion accordion-flush" id="accordionFlushExample">
-            <div class="accordion-item">
-              <h2 class="accordion-header" id="flush-headingOne">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                  View Class Description
-                </button>
-              </h2>
-              <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-                <div class="accordion-body"><%= crs.description %></div>
-              </div>
-            </div>
-            
-            
           </div>
-        <!-- Test -->
         </div>
 
-        
 
-        <a href="/course/c/<%= crs.id %>/m">Create new materials</a>
-        <br>
-        <a href="/course/c/<%= crs.id %>/a">Create new assignments</a>
-        <br>
-        <h1>Stream</h1>
+      </div>
+      <!-- Test -->
+    </div>
+
+    <br>
+    <br>
 
 
-        <a href="/course/c/<%= crs.id %>/m/all">Get materials</a>
-        <br>
-        <a href="/course/c/<%= crs.id %>/a/all">Get assignments</a>
+    <div class="dropdown">
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+        aria-haspopup="true" aria-expanded="false">
+        <i class="fas fa-plus-circle"></i>
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <a class="dropdown-item" href="/course/c/<%= crs.id %>/m">Create new materials</a>
+        <a class="dropdown-item" href="/course/c/<%= crs.id %>/a">Create new assignments</a>
+      </div>
+    </div>
 
-        
 
-<%- include('../layouts/footer') %>
+
+    <br>
+    <div class="spe_title">
+      <h1>Stream</h1>
+    </div>
+
+
+    
+    <a href="/course/c/<%= crs.id %>/m/all"><i class="fas fa-book"></i>    View Materials</a>
+    <br>
+    <a href="/course/c/<%= crs.id %>/a/all"><i class="far fa-file"></i>    View assignments</a>
+
+
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <%- include('../layouts/footer') %>

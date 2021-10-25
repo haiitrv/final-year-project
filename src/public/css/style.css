@@ -11,6 +11,7 @@
     margin-bottom: 15px;
     padding-top: 15px;
     padding-bottom: 15px;
+    
   }
 
 .container-search button[type=submit] {
@@ -21,6 +22,12 @@
     margin-top: 8px;
     margin-right: 16px;
     margin-bottom: 8px;
+}
+
+h4  {
+  text-align: center;
+  margin-top: 1rem;
+  text-decoration: underline;
 }
 
 .container-search input[type=text] {
@@ -45,6 +52,10 @@ h1 {
     font-family: 'Gemunu Libre', sans-serif;
     padding-top: 15px;
     padding-left: 15px;
+}
+
+h1.spe-asm {
+  text-align: center;
 }
 
 .course-des h1{
@@ -152,11 +163,140 @@ h1 {
     background-color: #03befc;
   }
 
+  form.lg-form-sms {
+    margin: 25px;
+    padding: 25px;
+    border: 4px solid black;
+    border-radius: 0px;
+  }
+  /* form login */
+  form.lg-form {
+    margin: 100px;
+    padding: 32px;
+    border: 4px solid #d1d5db;
+    min-width: 400px;
+    border-radius: 16px;
+  }
   
+  .lg-form label,
+  .lg-form input {
+    display: block;
+    min-width: 100%;
+    margin: 8px 0px;
+  }
+  
+  .lg-form label {
+    font-weight: bold;
+  }
+  
+  .lg-form input {
+    height: 44px;
+    border: none;
+    border-radius: 8px;
+    padding: 8px;
+    font-size: 1rem;
+    background-color: #f3f4f6;
+  }
+  
+  .lg-form input[type='submit'] {
+    margin: 16px 0;
+    background-color: black;
+    color: #fff;
+    cursor: pointer;
+  }
+  
+  /* form profile */
 
+  .profile {
+    min-width: 600px;
+    padding: 16px;
+    border: 4px solid #d1d5db;
+    border-radius: 16px;
+    margin-top: 50px;
+    margin-left: 250px;
+    margin-right: 250px;
+  }
+  
+  .profile > div {
+    padding: 16px;
+  }
+  
+  .profile .title {
+    font-weight: bold;
+  }
+  
+  .goback {
+    cursor: pointer;
+  }
+  
+  /* flash msg */
 
+  div.messages {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  ul.messages {
+    list-style: none;
+    min-width: 600px;
+    max-width: 600px;
+    overflow: hidden;
+    margin: 16px;
+  }
+  
+  ul.messages * {
+    padding: 8px 12px;
+  }
+  
+  .messages .error {
+    background-color: #e31743;
+  }
+  .messages .success {
+    background-color: #4ef542;
+  }
+  .messages .warning {
+    background-color: #fcd34d;
+  }
+  .messages .info {
+    background-color: #93c5fd;
+  }
 
+.login-form h1 {
+  text-align: center;
+}
 
+.error-page h1, h3{
+  text-align: center;
+}
 
+.error-page a {
+  text-align: center;
+  display: block;
+}
 
+.course-hyper a {
+  text-align: center;
+}
 
+.fa-cog {
+  position: absolute;
+  left: 1200px;
+}
+
+.fa-plus-square {
+  position: absolute;
+  left: 1175px;
+}
+
+.dropdown {
+ 
+}
+
+.add_user_title h1 {
+  text-align: center;
+}
+
+.send-mail-form h1 {
+  text-align: center;
+}

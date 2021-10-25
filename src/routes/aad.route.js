@@ -7,6 +7,8 @@ router.get('/add', aadController.add)
 router.post('/add', aadController.addCourse)
 router.get('/assign', aadController.getAssign)
 router.post('/assign', aadController.postAssign)
+router.get('/doSearch', aadController.search)
+
 
 
 module.exports = router

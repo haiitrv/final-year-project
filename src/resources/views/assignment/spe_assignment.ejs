@@ -2,10 +2,13 @@
 
   <div class="container">
     <!-- Info -->
-    <h1>
-      <%= asm.name %>
-    </h1>
-    <div class="profile">
+    <div class="spe-asm">
+      <h1>
+        <%= asm.name %>
+      </h1>
+    </div>
+    
+    <form class="lg-form">
       <div>
         <p class="subtitle">
           <%= asm.description %>
@@ -16,11 +19,18 @@
           <%= asm.cloudinary_url %>
         </p>
       </div>
-    </div>
+      <div>
+        <p class="subtitle">
+          Due Date: <%= asm.setDueDate %>
+        </p>
+      </div>
+    </form>
+      
 
     <!--Upload works-->
+    <h3>Submit Your Works Here</h3>
 
-    <form action="/course/c/<%= course.id %>/a/<%= asm.id %>" method="POST" enctype="multipart/form-data">
+    <form action="/course/c/<%= course.id %>/a/<%= asm.id %>" method="POST" enctype="multipart/form-data" class="lg-form-sms">
       <div>
         <label for="name">Name</label>
         <input type="text" name="name" id="name" placeholder="Enter the title">
@@ -34,16 +44,18 @@
         <input type="file" name="image" multiple>
       </div>
       <div>
-        <input type="submit" value="Create">
+        <input type="submit" value="Upload">
       </div>
     </form>
+    
     <!--Upload works-->
 
     <br>
     <br>
     <br>
     <br>
-    <a href="/course/c/<%= course.id %>/a/<%= asm.id %>/submissions">View all submissions</a>
+    <a href="/course/c/<%= course.id %>/a/<%= asm.id %>/submissions"><i class="fas fa-file-upload"></i>  View all submissions</a>
+    
     <!-- Comment section -->
 
 

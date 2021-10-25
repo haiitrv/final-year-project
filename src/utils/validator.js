@@ -1,5 +1,3 @@
-
-
 const { body } = require('express-validator');
 module.exports = {
   registerValidator: [
@@ -15,6 +13,10 @@ module.exports = {
     body('password')
       .trim()
       .isLength(5)
-      .withMessage('You must contain at least 5 characters!')
+      .withMessage('You must contain at least 5 characters!'),
+    body('address')
+      .trim()
+      .isLength(2)
+      .withMessage('The address must contain at least 2 characters')
   ],
 }

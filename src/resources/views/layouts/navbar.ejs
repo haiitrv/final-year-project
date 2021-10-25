@@ -9,6 +9,7 @@
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="/">Home</a>
                 </li>
+                
                 <% if (user) { %>
                     
                     <% if (user.role==='ADMIN' ) { %>
@@ -33,8 +34,8 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="/aad/assign">Assign</a>
                                 </li>
-                                <% } %>
 
+                                <% } %>
                                     <!-- li logout -->
                                     <li class="nav-item">
                                         <a class="nav-link" href="/auth/logout">Logout</a>

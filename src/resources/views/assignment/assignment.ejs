@@ -10,7 +10,8 @@
         <table class="table">
             <thead>
                 <th>Name</th>
-                <th>Description</th>
+                <th>Deadline</th>
+                <th>Due Date</th>
                 <th>Assignment URL</th>
             </thead>
             <tbody>
@@ -22,10 +23,13 @@
                             </a>
                         </td>
                         <td>
-                            <%= asm.description %>
+                            <%= asm.setDeadlineDate %>
                         </td>
                         <td>
-                            <%= asm.cloudinary_url %>
+                            <%= asm.setDueDate %>
+                        </td>
+                        <td>
+                            <a href="<%= asm.cloudinary_url %>"><%= asm.cloudinary_url %></a>
                         </td>
 
                     </tr>
@@ -35,6 +39,14 @@
 
     </div>
 
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 
 <%- include('../layouts/footer') %> 

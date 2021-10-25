@@ -14,6 +14,6 @@ router.post('/add', [registerValidator], adminController.addUser)
 router.get('/send-email', adminController.send)
 router.post('/send-email', adminController.sendMail)
 router.delete('/user/:id', adminController.delete)
-
+router.get('/doSearch', adminController.search)
 
 module.exports = router

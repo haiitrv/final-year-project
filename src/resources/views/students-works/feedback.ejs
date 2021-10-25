@@ -9,7 +9,8 @@
         <h3>
             <%= submission.description %>
         </h3>
-        <%= submission.cloudinary_url %>
+        <a href="<%= submission.cloudinary_url %>"><%= submission.cloudinary_url %></a>
+        
             <form action="/course/c/<%= course.id %>/a/<%= assignment.id %>/submissions/<%= submission.id %>/cmt"
                 method="POST">
                 <div>

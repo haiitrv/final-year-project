@@ -45,6 +45,11 @@ const UserSchema = new mongoose.Schema({
         ref: 'course' 
     }],
 
+    submission: [{
+        type: mongoose.Types.ObjectId,
+        ref: 'uploaded'
+    }],
+
 })
 
 // Save and encrypt password

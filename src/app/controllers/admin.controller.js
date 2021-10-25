@@ -21,6 +21,7 @@ class AdminController {
         }
     }
 
+
     // [GET] users profile
     async getProfile(req, res, next) {
         try {
@@ -104,7 +105,7 @@ class AdminController {
             const user = new User(req.body);
             await user.save();
             req.flash('success', `${user.email} has been registered succesfully!`)
-            res.redirect('/auth/login')
+            res.redirect('back')
         } catch (error) {
             next(error)
         }
@@ -154,6 +155,16 @@ class AdminController {
         req.flash('info', `User has been removed successfully!`)
         res.redirect('back')
     }
+
+    // SEARCH
+
+    async search(req, res, next) {
+        const name_search = req.query.name
+        const users = await User.find({ name: new RegExp(name_search, 'i') })
+        res.render('manage-users/searched', { users })
+    }
+
+
 }
 
 module.exports = new AdminController
