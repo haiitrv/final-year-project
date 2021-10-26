@@ -5,6 +5,5 @@ const { ensureTeacher } = require('../middleware/ensureRole')
 const { ensureStudent } = require('../middleware/ensureRole')
 
 router.get('/', siteController.index)
-// router.get('')
 
 module.exports = router

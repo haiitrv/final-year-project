@@ -3,6 +3,7 @@ const authRouter = require('./auth.route')
 const userRouter = require('./user.route')
 const adminRouter = require('./admin.route')
 const aadRouter = require('./aad.route')
+const studentRouter = require('./student.route')
 const courseRouter = require('./course.route')
 
 const { ensureLoggedIn, ensureLoggedOut } = require('connect-ensure-login')
@@ -23,6 +24,8 @@ function route(app) {
     app.use('/user', ensureLoggedIn({ redirectTo: '/auth/login' }), userRouter)
 
     app.use('/admin', ensureLoggedIn({ redirectTo: '/auth/login' }), ensureAdmin, adminRouter)
+
+    app.use('/student', ensureLoggedIn({ redirectTo: '/auth/login' }), ensureStudent, studentRouter)
 
     app.use('/aad', ensureLoggedIn({ redirectTo: '/auth/login' }), ensureAad, aadRouter)
 

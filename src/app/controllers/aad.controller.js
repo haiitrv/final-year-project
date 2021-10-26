@@ -43,6 +43,7 @@ class AadController {
     // [POST] post assign
     async postAssign(req, res, next) {
         // const { id, course } = req.body
+        
         const {id, course} = req.body
         const user = await User.findByIdAndUpdate(
             id,

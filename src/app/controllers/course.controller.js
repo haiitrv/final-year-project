@@ -53,12 +53,21 @@ class CourseController {
 
     // [GET] get update form
     async getUpdate(req, res, next) {
-        res.render('course/update_course')
+        const courseID = req.params.courseID
+        const course = await Course.findById(courseID)
+        res.render('course/update_course', { course })
     }
 
     // [POST] update course
     async postUpdate(req, res, next) {
-        
+        const { id, name, description } = req.body
+        await Course.findByIdAndUpdate(
+            id,
+            { $set: { name, description } },
+            { new: true }
+        )
+        req.flash('info', 'Class information has been updated successfully!')
+        res.redirect('back')
     }
 
 
@@ -224,7 +233,7 @@ class CourseController {
         res.redirect('back')
 
     } 
-    
+
    
 
 }

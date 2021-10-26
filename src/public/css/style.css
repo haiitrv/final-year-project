@@ -167,7 +167,7 @@ h1.spe-asm {
     margin: 25px;
     padding: 25px;
     border: 4px solid black;
-    border-radius: 0px;
+    border-radius: 50px;
   }
   /* form login */
   form.lg-form {
@@ -182,7 +182,7 @@ h1.spe-asm {
   .lg-form input {
     display: block;
     min-width: 100%;
-    margin: 8px 0px;
+    margin: 16px 0;
   }
   
   .lg-form label {
@@ -198,11 +198,14 @@ h1.spe-asm {
     background-color: #f3f4f6;
   }
   
-  .lg-form input[type='submit'] {
+  .lg-form button[type='submit'] {
     margin: 16px 0;
     background-color: black;
     color: #fff;
     cursor: pointer;
+    position: relative;
+    left: 462px;
+
   }
   
   /* form profile */
@@ -286,12 +289,9 @@ h1.spe-asm {
 
 .fa-plus-square {
   position: absolute;
-  left: 1175px;
+  left: 1155px;
 }
 
-.dropdown {
- 
-}
 
 .add_user_title h1 {
   text-align: center;
@@ -300,3 +300,13 @@ h1.spe-asm {
 .send-mail-form h1 {
   text-align: center;
 }
+
+.add_class_title h1 {
+  text-align: center;
+}
+
+.title_profile h1 {
+  text-align: center;
+}
+
+

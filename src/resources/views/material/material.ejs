@@ -10,6 +10,7 @@
                 <th>Name</th>
                 <th>Description</th>
                 <th>Material URL</th>
+                <th>Remove</th>
             </thead>
             <tbody>
                 <% materials.forEach(mtr=> { %>
@@ -25,7 +26,13 @@
                         <td>
                             <a href="<%= mtr.cloudinary_url %>"> View Materials </a>
                         </td>
-
+                        <td>
+                            <form method="POST" action="/course/c/<%= course.id %>/m/<%= mtr.id %>"
+                                enctype="application/x-www-form-urlencoded">
+                                <input type="hidden" name="_method" value="DELETE">
+                                <button type="submit">Delete</button>
+                            </form>
+                        </td>
                     </tr>
                     <% }) %>
             </tbody>

@@ -2,15 +2,18 @@
 
     
     <div class="container-sm">
-        <h1>Add New Class</h1>
-        <form action="/aad/add" method="post" class="lg-form">
+        <div class="add_class_title">
+            <h1>Add New Class</h1>
+        </div>
+        
+        <form action="/aad/add" method="POST" class="lg-form">
             <div>
                 <label for="name">Class Name</label>
                 <input type="text" name="name" id="name">
             </div>
             <div>
                 <label for="description">Class Description</label>
-                <textarea id="description" name="description" rows="4" cols="125">
+                <textarea id="description" name="description" rows="4" cols="120">
             </textarea>
             </div>
             <div>

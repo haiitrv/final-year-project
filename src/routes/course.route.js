@@ -18,7 +18,7 @@ router.post('/c/:courseID/u', ensureSpeCrs, courseController.postUpdate)
 
 // Get create materials form & post & get materials & specific materials 
 router.get('/c/:courseID/m', ensureUploadMat, courseController.getCreateMaterials)
-router.post('/c/:courseID/m', upload.single('images'), async (req, res, next) => {
+router.post('/c/:courseID/m', upload.single('image'), async (req, res, next) => {
     try {
         const courseID = req.params.courseID
         const result = await cloudinary.uploader.upload(req.file.path)
@@ -42,7 +42,21 @@ router.post('/c/:courseID/m', upload.single('images'), async (req, res, next) =>
 })
 router.get('/c/:courseID/m/all', ensureSpeCrs, courseController.getMaterials)
 router.get('/c/:courseID/m/:materialID', ensureSpeCrs, courseController.getSpeMaterials)
+router.delete('/c/:courseID/m/:materialID', ensureSpeCrs, async (req, res, next) => {
+    try {
+        const courseID = req.params.courseID
+        const materialID = req.params.materialID
+        let course = await Course.findById(courseID)
+        let material = await Material.findById(materialID)
+        await cloudinary.uploader.destroy(material.cloudinary_id)
+        await material.remove()
+        req.flash('success', `${material.name} has been removed successfully!`)
+        res.redirect('back')
+    } catch (error) {
+        next(error)
+    }
 
+})
 // Get create new asm form & get assignments & specific assignment
 router.get('/c/:courseID/a', ensureUploadMat, courseController.getCreateAssignments)
 router.post('/c/:courseID/a', upload.single('image'), async (req, res, next) => {
@@ -95,6 +109,22 @@ router.post('/c/:courseID/a/:assignmentID', upload.single('image'), async (req, 
     } catch (error) {
         next(error)
     }
+})
+
+router.delete('/c/:courseID/a/:assignmentID', ensureSpeCrs, async (req, res, next) => {
+    try {
+        const courseID = req.params.courseID
+        const assignmentID = req.params.assignmentID
+        let course = await Course.findById(courseID)
+        let assignment = await Assignment.findById(assignmentID)
+        await cloudinary.uploader.destroy(assignment.cloudinary_id)
+        await assignment.remove()
+        req.flash('success', `${assignment.name} has been removed successfully!`)
+        res.redirect('back')
+    } catch (error) {
+        next(error)
+    }
+
 })
 
 router.get('/c/:courseID/a/:assignmentID/submissions/:submissionID/cmt', ensureUploadMat, courseController.getSpeStudentWork)
